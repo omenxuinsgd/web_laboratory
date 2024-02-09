@@ -14,7 +14,9 @@ import {
   Label,
   Outline,
   Span,
+  LabelLogo, DropdownContainer, DropdownItem, DropdownSymbol
 } from "./styles";
+import { Link } from 'react-router-dom';
 
 const Header = ({ t }: any) => {
   const [visible, setVisibility] = useState(false);
@@ -30,15 +32,42 @@ const Header = ({ t }: any) => {
   const MenuItem = () => {
     const scrollTo = (id: string) => {
       const element = document.getElementById(id) as HTMLDivElement;
-      element.scrollIntoView({
-        behavior: "smooth",
-      });
-      setVisibility(false);
+      if(element){
+        element.scrollIntoView({
+          behavior: "smooth",
+        });
+        setVisibility(false);
+      }
     };
+    const [dropdownVisible, setDropdownVisibility] = useState(false);
+
+    const toggleDropdown = () => {
+      setDropdownVisibility(!dropdownVisible);
+    };
+
     return (
       <>
-        <CustomNavLinkSmall onClick={() => scrollTo("about")}>
+        {/* <CustomNavLinkSmall onClick={() => scrollTo("about")}>
           <Span>{t("About")}</Span>
+        </CustomNavLinkSmall> */}
+        <CustomNavLinkSmall onClick={toggleDropdown}>
+          <Span>{t('Categories')}</Span>
+          <DropdownSymbol>{dropdownVisible ? '▲' : '▼'}</DropdownSymbol>
+          {dropdownVisible && (
+            <DropdownContainer>
+              <DropdownItem onClick={() => scrollTo('asli')}>
+              <Link to="/asli">
+                <Span>{t('Asli')}</Span>
+              </Link>
+              </DropdownItem>
+              <DropdownItem onClick={() => scrollTo('palsu')}>
+                {t('Palsu')}
+              </DropdownItem>
+              <DropdownItem onClick={() => scrollTo('original')}>
+                {t('Original')}
+              </DropdownItem>
+            </DropdownContainer>
+          )}
         </CustomNavLinkSmall>
         <CustomNavLinkSmall onClick={() => scrollTo("mission")}>
           <Span>{t("Mission")}</Span>
@@ -63,7 +92,12 @@ const Header = ({ t }: any) => {
       <Container>
         <Row justify="space-between">
           <LogoContainer to="/" aria-label="homepage">
-            <SvgIcon src="logo.svg" width="101px" height="64px" />
+            <SvgIcon src="logo-uin.png" width="64px" height="64px" />
+              <LabelLogo>
+                  Laboratorium Fisika <br />
+                  Fakultas Sains dan Teknologi <br />
+                  UIN Sunan Gunung Djati Bandung
+              </LabelLogo>
           </LogoContainer>
           <NotHidden>
             <MenuItem />

@@ -15,6 +15,42 @@ export const LogoContainer = styled(Link)`
   display: flex;
 `;
 
+export const LabelLogo = styled("p")`
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  color: #18216d;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding-left: 10px;
+  text-align: left;
+  line-height: 100%;
+`;
+
+export const DropdownSymbol = styled("span")`
+    margin-left: 0.5rem;
+  `;
+
+export const DropdownContainer = styled("div")`
+    position: absolute;
+    width: fit-content;
+    // top: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  `;
+
+export const DropdownItem = styled("div")`
+    padding: 0.5rem;
+    color: #18216d;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  `;
+
 export const NavLink = styled("div")`
   display: inline-block;
   text-align: center;

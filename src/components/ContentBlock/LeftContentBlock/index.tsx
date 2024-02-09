@@ -11,6 +11,7 @@ import {
   MinTitle,
   MinPara,
 } from "./styles";
+// import { Link } from 'react-router-dom';
 
 const LeftContentBlock = ({
   icon,

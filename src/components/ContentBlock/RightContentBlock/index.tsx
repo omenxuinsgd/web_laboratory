@@ -10,6 +10,7 @@ import {
   ContentWrapper,
   ButtonWrapper,
 } from "./styles";
+import { Link } from 'react-router-dom';
 
 const RightBlock = ({
   title,
@@ -41,9 +42,10 @@ const RightBlock = ({
                         key={id}
                         color={item.color}
                         fixedWidth={true}
-                        onClick={() => scrollTo("about")}
                       >
-                        {t(item.title)}
+                        <Link to={`/${item.title}`}>
+                          {t(item.title)}
+                        </Link>
                       </Button>
                     );
                   })}
